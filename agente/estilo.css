@@ -1,0 +1,117 @@
+/* Tema NexoIA: edite as variáveis de :root para mudar cores e fontes. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --bg: #05060b; --panel: rgba(14, 17, 32, 0.62); --line: rgba(120, 140, 255, 0.14); --line-strong: rgba(34, 211, 238, 0.45); --text: #e6e9f5; --muted: #8a90ad; --cyan: #22d3ee; --violet: #8b5cf6; --pink: #f472b6; --ok: #34d399; --warn: #fbbf24; --err: #f87171;
+  --grad: linear-gradient(120deg, var(--cyan) 0%, var(--violet) 55%, var(--pink) 100%); --sans: 'Space Grotesk', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+/* Fundo: grade + brilhos */
+.stApp { background: radial-gradient(900px 500px at 85% -10%, rgba(139, 92, 246, 0.20), transparent 60%), radial-gradient(800px 500px at -10% 110%, rgba(34, 211, 238, 0.14), transparent 60%), var(--bg); font-family: var(--sans); color: var(--text) }
+.stApp::before { content: ""; position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(120, 140, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(120, 140, 255, 0.06) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); z-index: 0 }
+html, body, [class*="css"], .stMarkdown, p, li, label, input, textarea, button { font-family: var(--sans) !important }
+code, pre, kbd { font-family: var(--mono) !important }
+[data-testid="stHeader"], [data-testid="stBottom"] > div { background: transparent }
+[data-testid="stDecoration"] { display: none }
+[data-testid="stMainBlockContainer"] { max-width: 880px; padding-top: 2.2rem; padding-bottom: 7rem }
+/* Hero / título */
+.nx-hero { margin: 0 0 1.6rem; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem }
+.nx-hero-text { min-width: 0 }
+.nx-mascot { width: clamp(96px, 16vw, 148px); height: auto; flex-shrink: 0; filter: drop-shadow(0 0 28px rgba(34, 211, 238, .28)) }
+@media (max-width: 640px) { .nx-mascot { width: 84px } }
+.nx-status { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: .35rem .75rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(13, 16, 32, .55); backdrop-filter: blur(8px) }
+.nx-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; animation: nx-pulse 2s ease-in-out infinite }
+@keyframes nx-pulse { 50% { opacity: .35 } }
+.nx-title { display: block; width: fit-content; font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; margin: .9rem 0 .5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 24px rgba(139, 92, 246, .25)) }
+.nx-sub { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .5rem }
+.nx-chip { padding: .25rem .6rem; border-radius: 6px; border: 1px solid var(--line); background: rgba(13, 16, 32, .6) }
+.nx-chip b { color: var(--cyan); font-weight: 500 }
+.nx-empty { margin-top: 2.5rem; padding: 2rem; text-align: center; border: 1px dashed var(--line); border-radius: 18px; background: rgba(13, 16, 32, .35); color: var(--muted) }
+.nx-empty h3 { color: var(--text); font-weight: 600; font-size: 1.15rem; margin: 0 0 .4rem; letter-spacing: -0.01em }
+.nx-empty p { margin: 0; font-size: .92rem }
+/* Mensagens */
+[data-testid="stChatMessage"] { position: relative; z-index: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.15rem; margin-bottom: .9rem; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .8); animation: nx-in .35s ease-out both }
+@keyframes nx-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) { background: linear-gradient(135deg, rgba(139, 92, 246, .16), rgba(14, 17, 32, .6)); border-color: rgba(139, 92, 246, .30) }
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarAssistant"]), [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarImage"]), [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarCustom"]) { border-left: 2px solid var(--cyan); box-shadow: -8px 0 24px -16px var(--cyan), 0 10px 30px -18px rgba(0, 0, 0, .8) }
+[data-testid="stChatMessageAvatarImage"] { width: 2.4rem !important; height: 2.4rem !important; border-radius: 12px; background: rgba(34, 211, 238, .08); padding: 2px }
+[data-testid="stChatMessageAvatarImage"] img { object-fit: contain }
+[data-testid="stChatMessageAvatarUser"], [data-testid="stChatMessageAvatarAssistant"] { border-radius: 10px; color: #05060b }
+[data-testid="stChatMessageAvatarUser"] { background: linear-gradient(135deg, var(--violet), var(--pink)) }
+[data-testid="stChatMessageAvatarAssistant"] { background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 16px rgba(34, 211, 238, .45) }
+[data-testid="stChatMessage"] p, [data-testid="stChatMessage"] li { line-height: 1.65 }
+[data-testid="stChatMessage"] pre { background: #070915 !important; border: 1px solid var(--line); border-radius: 10px }
+/* Caixa de entrada */
+[data-testid="stBottomBlockContainer"] { max-width: 880px; background: linear-gradient(to top, var(--bg) 55%, transparent) }
+[data-testid="stChatInput"] { background: rgba(13, 16, 32, .85) !important; border: 1px solid var(--line) !important; border-radius: 16px !important; backdrop-filter: blur(14px); transition: border-color .2s, box-shadow .2s }
+[data-testid="stChatInput"]:focus-within { border-color: var(--line-strong) !important; box-shadow: 0 0 0 4px rgba(34, 211, 238, .08), 0 0 32px -8px rgba(34, 211, 238, .5) }
+[data-testid="stChatInputTextArea"] { color: var(--text) !important }
+[data-testid="stChatInputSubmitButton"] { background: var(--grad) !important; border-radius: 10px !important; color: #05060b !important }
+/* Barra lateral */
+[data-testid="stSidebar"] { background: rgba(8, 10, 20, .78) !important; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-right: 1px solid var(--line) }
+.nx-side-brand { font-family: var(--mono); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); padding-bottom: .9rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line) }
+.nx-side-brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500 }
+.nx-label { font-family: var(--mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); margin: 1.2rem 0 .3rem; opacity: .85 }
+[data-testid="stSidebar"] label p { font-size: .82rem !important; color: var(--muted) !important }
+[data-testid="stSidebar"] input, [data-testid="stSidebar"] textarea, [data-testid="stSidebar"] [data-baseweb="select"] > div { background: rgba(5, 6, 11, .7) !important; border-color: var(--line) !important; border-radius: 10px !important; font-family: var(--mono) !important; font-size: .82rem !important }
+[data-testid="stSidebar"] [data-baseweb="select"] > div:hover, [data-testid="stSidebar"] input:focus, [data-testid="stSidebar"] textarea:focus { border-color: var(--line-strong) !important }
+.stButton > button { width: 100%; background: rgba(13, 16, 32, .7); border: 1px solid var(--line); border-radius: 10px; color: var(--text); font-weight: 500; letter-spacing: .01em; transition: all .2s ease }
+.stButton > button:hover { border-color: var(--line-strong); color: var(--cyan); box-shadow: 0 0 20px -6px rgba(34, 211, 238, .6); transform: translateY(-1px) }
+.stButton > button:active { transform: none }
+[data-testid="stExpander"] details { background: rgba(5, 6, 11, .5); border: 1px solid var(--line) !important; border-radius: 10px }
+[data-testid="stExpander"] summary { font-size: .82rem; color: var(--muted) }
+[data-testid="stSlider"] [role="slider"] { background: var(--cyan) !important; box-shadow: 0 0 12px var(--cyan) }
+/* Boas vindas (cadastro de intenção) */
+.nx-welcome { position: relative; z-index: 1; margin-top: 1.2rem; padding: 1.6rem 1.6rem 1rem; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(160deg, rgba(34, 211, 238, .06), rgba(13, 16, 32, .55) 40%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px) }
+.nx-welcome-kicker { font-family: var(--mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); margin-bottom: .6rem }
+.nx-welcome h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; margin: 0 0 .5rem; color: var(--text) }
+.nx-welcome-lead { color: var(--muted); font-size: .95rem; margin: 0 0 1.2rem; line-height: 1.6 }
+.nx-welcome-lead b { color: var(--text) }
+.nx-welcome-lead .nx-ok { color: #34d399; font-family: var(--mono); font-size: .85rem; letter-spacing: .04em }
+.nx-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem }
+@media (max-width: 640px) { .nx-grid { grid-template-columns: 1fr } }
+.nx-field { padding: .8rem .9rem; border-radius: 12px; border: 1px solid var(--line); background: rgba(5, 6, 11, .55); transition: border-color .2s, transform .2s }
+.nx-field:hover { border-color: var(--line-strong); transform: translateY(-1px) }
+.nx-field-head { display: flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .95rem; color: var(--text) }
+.nx-num { font-family: var(--mono); font-size: .7rem; font-weight: 500; padding: .1rem .38rem; border-radius: 6px; color: #05060b; background: var(--grad) }
+.nx-field-desc { font-size: .84rem; color: var(--muted); margin-top: .3rem; line-height: 1.45 }
+.nx-field-ex { font-family: var(--mono); font-size: .72rem; color: rgba(34, 211, 238, .75); margin-top: .4rem }
+.nx-tips { display: grid; gap: .5rem; margin-top: 1.1rem }
+.nx-tip { display: flex; gap: .7rem; align-items: flex-start; font-size: .86rem; color: var(--muted); line-height: 1.5; padding: .6rem .8rem; border-radius: 10px; background: rgba(139, 92, 246, .07); border: 1px solid rgba(139, 92, 246, .16) }
+.nx-tip span { font-family: var(--mono); color: var(--violet); min-width: 1.1rem; text-align: center }
+.nx-tip b { color: var(--text); font-weight: 600 }
+.nx-template-label { font-family: var(--mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); margin: 1.4rem 0 .55rem .2rem }
+.nx-template-label span { color: var(--muted); text-transform: none; letter-spacing: .02em }
+[data-testid="stCode"] pre, .stCode pre { background: rgba(5, 6, 11, .75) !important; border: 1px solid var(--line); border-radius: 12px }
+/* Chamadas de tool */
+.nx-tool { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; padding: .55rem .75rem; margin: .1rem 0 .5rem; border-radius: 10px; border: 1px solid var(--line); background: rgba(5, 6, 11, .6); font-size: .8rem }
+.nx-tool code { font-family: var(--mono) !important; font-size: .76rem; background: transparent !important; color: var(--text); padding: 0 }
+.nx-tool-tag { font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: .12rem .45rem; border-radius: 5px; color: #05060b; background: var(--grad) }
+.nx-tool-res { margin-left: auto; font-family: var(--mono); font-size: .72rem }
+.nx-tool-ok { border-color: rgba(52, 211, 153, .35) }
+.nx-tool-warn { border-color: rgba(251, 191, 36, .4); box-shadow: 0 0 18px -10px #fbbf24 }
+.nx-tool-err { border-color: rgba(248, 113, 113, .4) }
+/* Cores de situação: verde = tudo certo · âmbar = precisa da sua atenção · vermelho = erro a corrigir */
+.nx-banner { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; padding: .8rem 1rem; margin: .1rem 0 .4rem; border-radius: 12px; border: 1px solid }
+.nx-banner b { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase }
+.nx-banner-sub { color: var(--text); font-size: .92rem }
+.nx-banner > div { flex-basis: 100%; color: var(--muted); font-size: .84rem }
+.nx-banner-ok { border-color: rgba(52, 211, 153, .5); background: rgba(52, 211, 153, .09); box-shadow: 0 0 24px -12px var(--ok) }
+.nx-banner-warn { border-color: rgba(251, 191, 36, .5); background: rgba(251, 191, 36, .08); box-shadow: 0 0 24px -12px var(--warn) }
+.nx-ponto { display: inline-block; margin: .2rem .3rem 0 0; padding: .08rem .55rem; border-radius: 999px; font-family: var(--mono); font-size: .72rem; color: #fde68a; background: rgba(251, 191, 36, .12); border: 1px solid rgba(251, 191, 36, .35) }
+.nx-tabela tr.nx-lac td { background: rgba(251, 191, 36, .07) }
+.nx-tabela tr.nx-hip td { background: rgba(251, 191, 36, .035) }
+.nx-origem { font-family: var(--mono); font-size: .72rem; padding: .1rem .5rem; border-radius: 6px; white-space: nowrap }
+tr.nx-fat .nx-origem { color: var(--ok); background: rgba(52, 211, 153, .1) }
+tr.nx-hip .nx-origem, tr.nx-lac .nx-origem { color: var(--warn); background: rgba(251, 191, 36, .12) }
+[class*="st-key-nx-ok-"], [class*="st-key-nx-warn-"], [class*="st-key-nx-err-"], [class*="st-key-nx-info-"] { padding: .7rem .95rem; border-radius: 12px; border: 1px solid; border-left-width: 3px; gap: .3rem }
+[class*="st-key-nx-ok-"] { border-color: rgba(52, 211, 153, .45); background: rgba(52, 211, 153, .06) }
+[class*="st-key-nx-warn-"] { border-color: rgba(251, 191, 36, .5); background: rgba(251, 191, 36, .07) }
+[class*="st-key-nx-err-"] { border-color: rgba(248, 113, 113, .5); background: rgba(248, 113, 113, .08) }
+[class*="st-key-nx-info-"] { border-color: rgba(34, 211, 238, .3); background: rgba(34, 211, 238, .04) }
+.nx-banner-ok b, .nx-tool-ok .nx-tool-res, [class*="st-key-nx-ok-"] strong, .nx-tip b.nx-c-ok { color: var(--ok) }
+.nx-banner-warn b, .nx-tool-warn .nx-tool-res, [class*="st-key-nx-warn-"] strong, .nx-tip b.nx-c-warn { color: var(--warn) }
+.nx-tool-err .nx-tool-res, [class*="st-key-nx-err-"] strong, .nx-tip b.nx-c-err { color: var(--err) }
+[class*="st-key-nx-info-"] strong { color: var(--cyan) }
+::-webkit-scrollbar { width: 8px; height: 8px }
+::-webkit-scrollbar-thumb { background: rgba(120, 140, 255, .22); border-radius: 8px }
+::-webkit-scrollbar-track { background: transparent }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important } }

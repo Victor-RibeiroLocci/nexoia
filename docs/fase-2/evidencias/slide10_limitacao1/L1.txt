@@ -1,0 +1,12 @@
+LIMITAÇÃO 1 — Não aplica suas regras de forma consistente
+Regra da v3 (# PERSONA): "Ao apontar um campo faltante, explique por que ele é necessário."
+Ferramenta: ChatGPT · Versão: v3 · Data: 29/09/2026
+Prints reaproveitados dos testes das limitações 2 e 3 (mesmo prompt v3).
+
+L1_P1_explica.png      (= L3_P1) — as perguntas vêm COM explicação:
+                         "Qual nome você quer dar para esta intenção? Isso facilita identificar a comunicação."
+L1_P2_nao_explica.png  (= L3_P2) — mesma conversa, resposta seguinte: as mesmas perguntas SEM explicação:
+                         "Qual nome você quer dar para esta intenção?"
+L1_P3_nao_explica.png  (= L2_P1) — outra conversa: perguntas SEM explicação.
+
+O que mostra: a mesma regra é aplicada em uma resposta e ignorada em outra.
